@@ -59,7 +59,22 @@ $$
 
 $$
 \text{3) Condición borde 2:} \quad
--k \frac{\partial T(x=\delta)}{\partial x}= h_2 \left( T(x=\delta) - T_\infty^{\text{exterior}} \right)- \alpha q''_e
+-k \frac{\partial T(x=\delta)}{\partial x}= h_2 \left( T(x=\delta) - T_\infty^{\text{exterior}}(t) \right)- \alpha q''_{solar}(t)
+$$
+
+donde $T_\infty^{\text{exterior}(t)}$ y $q''_{solar}(t)$ son funciones senoidales en función del tiempo:
+
+$$
+T_\infty^{\text{exterior}(t)}= \frac{T_{\max} + T_{\min}}{2}+ \frac{T_{\max} - T_{\min}}{2}\sin\left( \frac{\pi}{43200} t - \frac{2\pi}{3} \right)
+$$
+
+$$
+q''_{solar}(t) = 
+\begin{cases}
+0, & 21{:}00 \le t \le 5{:}00 \\
+q_{s,\max} \, \sin\left( \frac{\pi}{57600}\, t - \frac{5\pi}{16} \right),
+& 5{:}00 < t < 21{:}00
+\end{cases}
 $$
 
 Luego, se puede discretizar la ecuación diferencial y las condiciones de borde. Para la ecuación diferencial, se considera una aproximación hacia adelante de primer orden para la derivada temporal, y una aproximación central de segundo orden para la derivada espacial. Para la condición inicial, se reemplaza en el nodo de tiempo 0. Para la condición de borde 1, se usa una aproximación hacia adelante de segundo orden. Para la condición de borde 2, se usa una aproximación hacia atrás de segundo orden. A continuación, se muestra la forma en que se despeja la discretización de la ecuación diferencial.
@@ -105,7 +120,7 @@ $$
 Para resolver el sistema, se utilizarán dos métodos numéricos acoplados. En primer lugar, se implementará el método forward time centred space (FTCS) para resolver el sistema. En cada iteración, se debe realizar una serie de iteraciones
 sobre punto fijo para poder construir una matriz de coeficientes constante. 
 
-DESCRIBIR A DETALLE, VER SI INCLUIR FORMULAS T exterior y Q solar
+DESCRIBIR A DETALLE
 
 ## Instrucciones para ejecutar el código
 
