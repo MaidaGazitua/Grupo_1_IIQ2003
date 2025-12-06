@@ -17,12 +17,40 @@ El proyecto permite caracterizar el perfil de temperatura en paredes residencial
 
 Luego, se definieron los principales fenómenos de transporte involucrados. De forma más relevante, se debe considerar la transferencia de calor por conducción a lo largo del espesor de la pared. A la vez, existe transferencia de calor por convección natural, tanto hacia el interior como el exterior de la vivienda. Para el interior, se consideró una temperatura constante de 21°C. Para el exterior, se consideró una variación temporal senoidal de temperatura durante el verano. Por último, se debe incluir el calor absorbido por radiación solar, asumiendo una variación senoidal a lo largo del día.
 
-Para modelar el sistema, se consideraron 4 supuestos relevantes. En primer lugar, la transferencia de calor a través de la pared es unidimensional en el eje x. Además, no hay ninguna fuente de generación de energía dentro de la pared. A la vez, el aislante dentro de la pared está distribuido de forma homogénea y es isotrópico. Finalmente, la densidad y conductividad térmica del material son constantes. A continuación, se presenta una figura que modela el sistema.
+Para modelar el sistema, se consideraron 4 supuestos relevantes. En primer lugar, la transferencia de calor a través de la pared es unidimensional en el eje x. Además, no hay ninguna fuente de generación de energía dentro de la pared. A la vez, el aislante dentro de la pared está distribuido de forma homogénea y es isotrópico. Finalmente, la densidad y conductividad térmica del material son constantes. A continuación, se presenta un esquema del sistema.
 
-
-
+![Esquema transferencia de calor en pared residencial](Figuras/Esquema.png)
 
 ## Descripción del método numérico utilizado
+
+A partir de los supuestos realizados, se pudo modelar el problema mediante la ecuación de conservación de energía:
+
+$$
+\rho c_p \left( \frac{\partial T}{\partial t} 
++ v_x \frac{\partial T}{\partial x}
++ v_y \frac{\partial T}{\partial y}
++ v_z \frac{\partial T}{\partial z} \right)
+= k \left(
+\frac{\partial^2 T}{\partial x^2}
++ \frac{\partial^2 T}{\partial y^2}
++ \frac{\partial^2 T}{\partial z^2}
+\right)
++ \psi_b
+$$
+
+
+
+Se consideró que las velocidades en todos los ejes son 0, ya que se está modelando un sólido. Además, solo nos interesa el transporte transiente en la dirección x. Por lo tanto, el sistema se simplifica a a siguiente ecuación:
+
+$$
+\rho c_p \frac{\partial T}{\partial t}
+= k \frac{\partial^2 T}{\partial x^2}
+$$
+
+
+Para resolver el sistema, se utilizarán dos métodos numéricos acoplados. En primer lugar, se implementará el método forward time centred space (FTCS) para resolver el sistema. En cada iteración, se debe realizar una serie de iteraciones
+sobre punto fijo para poder construir una matriz de coeficientes constante. 
+
+
 ## Instrucciones para ejecutar el código
 ## Gráficos generados
-## Bibliografía
