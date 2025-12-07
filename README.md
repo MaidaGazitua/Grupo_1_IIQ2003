@@ -128,7 +128,14 @@ DESCRIBIR A DETALLE
 2. Definir datos
 3. Definir de los parámetros de grilla y computacionales
 4. Definir parámetros FTCS
+5. Implementar algoritmo de FTCS con método del punto fijo: Se usa método de punto fijo para construir la matriz A considerando la capacidad calorífica ($c_p$) variable. Una vez que se define A, se puede implementar iteración del algoritmo FTCS.
+6. Análisis de resultados: Se construye un gráfico de la temperatura en función de la distancia en distintos instantes de tiempo, un gráfico de contorno de la temperatura en función del grosor de la pared y del tiempo, y un gráfico de contorno de la capacidad calorífica en función del grosor de la pared y del tiempo.
 
 ## Gráficos generados
 
-COPIAR Y PEGAR
+A continuación, se presentan los gráficos generados para el análisis de resultados.
+Perfil de temperatura exterior a lo largo del día
+Variación en la radiación solar a lo largo del día
+Temperatura en función de la distancia en distintos instantes de tiempo
+Gráfico de contorno de la temperatura en función del grosor de la pared y del tiempo
+Gráfico de contorno de la capacidad calorífica en función del grosor de la pared y del tiempo
