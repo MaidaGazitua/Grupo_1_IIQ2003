@@ -53,7 +53,7 @@ $$
 $$
 
 $$
-\text{2) Convección borde 1:} \quad
+\text{2) Condición borde 1:} \quad
 -k \frac{\partial T(x=0)}{\partial x} = h_1 \left( T_\infty^{\text{interior}} - T(x=0) \right)
 $$
 
@@ -65,7 +65,7 @@ $$
 donde $T_\infty^{\text{exterior}(t)}$ y $q''_{solar}(t)$ son funciones senoidales en función del tiempo:
 
 $$
-T_\infty^{\text{exterior}(t)}= \frac{T_{\max} + T_{\min}}{2}+ \frac{T_{\max} - T_{\min}}{2}\sin\left( \frac{\pi}{43200} t - \frac{2\pi}{3} \right)
+T_\infty^{\text{exterior}}(t)= \frac{T_{\max} + T_{\min}}{2}+ \frac{T_{\max} - T_{\min}}{2}\sin\left( \frac{\pi}{43200} t - \frac{2\pi}{3} \right)
 $$
 
 $$
@@ -124,7 +124,10 @@ DESCRIBIR A DETALLE
 
 ## Instrucciones para ejecutar el código
 
-REVISAR CODIGO
+1. Importar módulos: numpy, matplotlib.pyplot, cm
+2. Definir datos
+3. Definir de los parámetros de grilla y computacionales
+4. Definir parámetros FTCS
 
 ## Gráficos generados
 
