@@ -170,8 +170,16 @@ El paso a paso específico de la implementación del código es el siguiente:
 
 A continuación, se presentan los gráficos generados para el análisis de resultados.
 
+Radiación a lo largo del día
+
+Temperatura externa a lo largo del día
+
 Temperatura en función de la distancia en distintos instantes de tiempo
+![Perfil de temperatura en función de x y t](Figuras/Perfil de temperatura en función de x y t.png)
 
 Gráfico de contorno de la temperatura en función del grosor de la pared y del tiempo
+![Gráfico de contorno de temperatura en función de x y t](Figuras/Gráfico de contorno de temperatura en función de x y t.png)
 
 Gráfico de contorno de la capacidad calorífica en función del grosor de la pared y del tiempo
+![Gráfico de contorno de cp en función de x y t](Figuras/Gráfico de contorno de cp en función de x y t.png)
+
