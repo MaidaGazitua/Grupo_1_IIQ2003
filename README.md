@@ -141,6 +141,8 @@ También, se usó un estudio enfocado en el geopolímero de concreto con materia
 
 Finalmente, se definieron los parámetros que se deben reemplazar en la ecuación que define el valor de la capacidad calorífica en función de la temperatura. Nuevamente, se usaron los datos experimentales de un estudio enfocado en el geopolímero de concreto con material de cambio de fase microencapsulado [13].
 
+3. Graficar la radiación y temperatura exterior en función del tiempo. De esta forma, se verifica que las ecuaciones efectivamente representan de forma adecuada las variaciones temporales.
+
 3. Definir de los parámetros de grilla y computacionales
 4. Definir parámetros FTCS
 5. Implementar algoritmo de FTCS con método del punto fijo: Se usa método de punto fijo para construir la matriz A considerando la capacidad calorífica ($c_p$) variable. Una vez que se define A, se puede implementar iteración del algoritmo FTCS.
