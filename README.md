@@ -117,10 +117,11 @@ $$
 T_i^j = \frac{1}{-\frac{3}{2\Delta x}-h_2}\left(\frac{k}{2\Delta x} \left(- 4T_{i-1}^{j} + T_{i-2}^{j} \right) - h_2 T_\infty^{\text{exterior}} -\alpha q_{solar}\right)
 $$
 
-Para resolver el sistema, se utilizarán dos métodos numéricos acoplados. En primer lugar, se implementará el método forward time centred space (FTCS) para resolver el sistema. En cada iteración, se debe realizar una serie de iteraciones
-sobre punto fijo para poder construir una matriz de coeficientes constante. 
+Para resolver el sistema, se utilizarán dos métodos numéricos acoplados. En primer lugar, se implementará el método forward time centred space (FTCS) para resolver el sistema. Se inicia el esquema FTCS para cada instante de tiempo t. Dado que la capacidad calorífica ($c_p$) varía con la temperatura, se implementa el método de punto fijo para construir una matriz A que también dependa de la temperatura. Luego, para cada instante de tiempo, se define una temperatura intermedia. A partir de esta, se calcula la matriz A que contiene los coeficientes del método FTCS y se calcula una nueva temperatura. Una vez que el método converge, se continua con la aplicación del algoritmo FTCS. Esto significa que se actualizan los nodos interiores y condiciones de borde. Este procedimiento se repite para todos los instantes de tiempo, 
 
-DESCRIBIR A DETALLE
+Por un lado, el algoritmo FTCS...
+
+Por el otro lado, el método del punto fijo...
 
 ## Instrucciones para ejecutar el código
 
@@ -129,30 +130,48 @@ DESCRIBIR A DETALLE
 - matplotlib.pyplot: permite realizar gráficos.
 - cm: es una paleta de colores inclusiva que facilita la visualización de los gráficos.
   
-2. Definir datos: Antes de implementar el modelo computacional, se deben definir todos los datos que se usarán a lo largo del problema. Al escribirlos en un inicio, se mantiene un orden que permite comprender de forma secuencial el modelo.
+2. Definir datos: Antes de implementar el modelo computacional, se deben definir todos los datos que se usarán a lo largo del problema. Al escribirlos en un inicio, se mantiene un orden que permite comprender de forma secuencial el modelo. Se debe definir la densidad y espesor de la pared, los coeficientes de transferencia de calor por convección natural, la conductividad térmica, difusividad térmica promedio, temperatura interior de la vivienda, temperatura inicial, mínima y máxima de medición, temperatura de fusión del material, absorbancia, radiación solar máxima y los parámetros a reemplazar en la ecuación que define el valor de la capacidad calorífica en función de la temperatura.
 
-Primero, se definió la densidad y espesor de la pared, considerando una concentración de 5,2% de MPCM. A la vez, se consideró un espesor promedio de 0.15 m, que es la norma establecida para la construcción de paredes [11].
+3. Graficar la radiación y temperatura exterior en función del tiempo. De esta forma, se verifica que las ecuaciones efectivamente representan de forma adecuada las variaciones temporales. Simplemente se reemplazan las ecuaciones definidas previamente con los datos encontrados.
 
-Luego, se definieron los coeficientes de transferencia de calor por convección natural, para lo cual se usan los datos entregados por el estudio realizado por Cao et al. (2018). Además, se define un valor promedio para la conductividad térmica, también obtenido del estudio realizado por Cao et al. [12]. Esta aproximación se justifica porque la conductividad térmica se mantiene constante en el rango en que varía la temperatura. No se puede asumir lo mismo para la capacidad calorífica, ya que este parámetro evidencia el cambio de fase del material. Sin embargo, se usará un valor promedio de capacidad calorífica para definir un valor de difusividad térmica aproximado [13]. Este solo se usará para definir el paso del espaciamiento temporal.
+4. Definir de los parámetros de grilla y computacionales: Se debe definir una serie de puntos en el espacio y en el tiempo, los que reciben el nombre de nodos. En específico, crearemos 200 nodos en el espacio y 200 nodos en el tiempo. Luego, al momento de discretizar la ecuación diferencial, se evalúa la iteración en cada nodo. También definiremos el dominio discretizado como un arreglo de varios puntos espaciales y temporales, a partir de lo cual se definirá el espaciamiento. Para el espaciamiento en x, simplemente se divide el espesor por el número de nodos (se le resta 1 por aproximación). Para el caso del espaciamiento en t, se define un número de Fourier aceptable (0.45) y se calcula el valor de $\delta t$ para el cual el método FTCS es estable. Para ello, se usa la siguiente ecuación: $\Delta t \leq \frac{Fo \cdot \Delta x^2}{2 \alpha}$
 
-Para definir la temperatura en el interior de la vivienda, se consideró un valor constante de 21°C. Luego, para definir la temperatura inicial, mínima y máxima de medición, se usaron los datos promedio medidos durante el mes de enero entregados por el Ministerio de Energía [14]. Finalmente, se obtuvo que la temperatura de fusión del material es 23,7°C [12].
+5. Definir parámetros FTCS: Se define tiempo inicial y final de integración, considerando que se busca medir el perfil de temperatura durante las 24 horas del día. Además, se considerará un intervalo de tiempo de 1 segundo para guardar los resultados. Por otro lado, se define una lista inicialmente vacía para guardar los tiempos donde se graban los perfiles de temperatura. De forma similar, se definen listas vacías para guardar los valores de capacidad calorífica y los perfiles de temperatura en función del tiempo. A la vez, se inicializa el vector de temperatuas con $T_0$, de modo de incluir la condición inicial del problema. Finalmente, se copia la temperatura en otra variable, la cual servirá para ir actualizando el método FTCS.
+   
+6. Implementar algoritmo de FTCS con método del punto fijo: Se inicia el esquema FTCS para cada instante de tiempo t. Dado que la capacidad calorífica ($c_p$) varía con la temperatura, se implementa el método de punto fijo para construir una matriz A que también dependa de la temperatura. Luego, para cada instante de tiempo se define una temperatura intermedia. A partir de esta, se calcula la matriz A que contiene los coeficientes del método FTCS. Después, se calcula una nueva temperatura. Una vez que el método converge, se continua con la aplicación del algoritmo FTCS. Esto significa que se actualizan los nodos interiores y condiciones de borde. Este procedimiento se repite para todos los instantes de tiempo, para lo cual se crean 4 listas relevantes:
+- T_old: guarda la temperatura del tiempo anterior del método FTCS.
+- T_new: temperatura final obtenida en el tiempo actual del método FTCS.
+- T_int: temperatura intermedia usada dentro del método de punto fijo.
+- T_old_i: temperatura intermedia de la iteración anterior del método de punto fijo.
 
-También, se usó un estudio enfocado en el geopolímero de concreto con material de cambio de fase microencapsulado para definir su absorbancia [13]. Para definir la radiación solar máxima, se usaron los datos promedio medidos durante el mes de enero entregados por el Ministerio de Energía [14].
+El paso a paso específico de la implementación del código es el siguiente:
 
-Finalmente, se definieron los parámetros que se deben reemplazar en la ecuación que define el valor de la capacidad calorífica en función de la temperatura. Nuevamente, se usaron los datos experimentales de un estudio enfocado en el geopolímero de concreto con material de cambio de fase microencapsulado [13].
+**Paso 1:** Se comienza la iteración FTCS: se debe iterar para todos los tiempos, desde el inicial hasta el final. Para ello, se define un ciclo que recorre todos los instantes de tiempo.
 
-3. Graficar la radiación y temperatura exterior en función del tiempo. De esta forma, se verifica que las ecuaciones efectivamente representan de forma adecuada las variaciones temporales.
+**Paso 2:** Se define una tolerancia inicial: posteriormente, se irá actualizando en cada iteración del método de punto fijo. Permite comenzar el ciclo de iteración, por lo que se elige una tolerancia inicial alta.
 
-3. Definir de los parámetros de grilla y computacionales
-4. Definir parámetros FTCS
-5. Implementar algoritmo de FTCS con método del punto fijo: Se usa método de punto fijo para construir la matriz A considerando la capacidad calorífica ($c_p$) variable. Una vez que se define A, se puede implementar iteración del algoritmo FTCS.
-6. Análisis de resultados: Se construye un gráfico de la temperatura en función de la distancia en distintos instantes de tiempo, un gráfico de contorno de la temperatura en función del grosor de la pared y del tiempo, y un gráfico de contorno de la capacidad calorífica en función del grosor de la pared y del tiempo.
+**Paso 3:** Se inicia un contador: sirve para llevar registro del número de iteración dentro del método de punto fijo
+
+**Paso 4:** Iniciar una lista con temperatura intermedia (T_int): el objetivo es comparar la temperatura intermedia con la nueva (T_new) en el método del punto fijo. Una vez que estas son suficientemente cercanas entre sí, se detiene la iteración.
+
+**Paso 5:** Comenzar ciclo iteración de método de punto fijo: se detiene cuando la tolerancia es menor a 0.001. Podría elegirse un número más pequeño, pero el código se demora más tiempo en entregar un resultado.
+
+**Paso 6:** El primer paso dentro del método del punto fijo es calcular la capacidad calorífica para cada nodo. Para ello, se inicializa el vector cp de tamaño n y se rellena con 0. Luego, se recorren todos los nodos y se calcula el valor de la capacidad calorífica en cada uno de ellos. Se considera que existen dos fórmulas distintas en caso que la temperatura sea menor o mayor a la temperatura de fusión. Luego, se calcula la difusividad térmica dado los valores de cp calculados.
+
+**Paso 7:** El segundo paso dentro del método del punto fijo es construir la matriz A. Se inicia como una matriz de tamaño nxn. Luego, se completan los nodos interiores de modo que se cumpla $T^{j+1}=AT^j$ (método FTCS).
+
+**Paso 8:** El último paso dentro del método del punto fijo es calcular la tolerancia. Para ello, se comienza calculando la temperatura intermedia entre la iteración anterior y la actual. Para ello, simplemente se resuelve el sistema de ecuaciones T_int=T_old+np.dot(A,T_old)*dt. Esta es la ecuación de FTCS aplicada al método de punto fijo, usando la temperatura intermedia para alcanzar la convergencia. Luego, se actualiza T_old_i como una copia de T_int para usar en la iteración interna. Finalmente, se calcula la tolerancia. Solo para la primera iteración (contador=0), se calcula como norm(T_int-T_old)/n. Para las siguientes iteraciones, se calcula tomando la diferencia T_int-T_old_i. Luego, se aumenta el contador. Si es que la tolerancia es alta, se vuelve a iterar en el método del punto fijo. De lo contrario, se continua con el siguiente paso.
+
+**Paso 9:** Ahora que se tiene la matriz A, se puede resolver el algoritmo FTCS. Primero, se actualizan los nodos interiores. Para ello, se resuelve el sistema de ecuaciones T_new=T_int+np.dot(A,T_int)*dt. Se usa T_int porque es la temperatura corregida en el tiempo actual. Luego, se actualizan las condiciones de borde. Finalmente, se crea una copia de la nueva temperatura, se actualiza el tiempo y se guardan los resultados de tiempo, temperatura y cp.
+
+8. Análisis de resultados: Se construye un gráfico de la temperatura en función de la distancia en distintos instantes de tiempo, un gráfico de contorno de la temperatura en función del grosor de la pared y del tiempo, y un gráfico de contorno de la capacidad calorífica en función del grosor de la pared y del tiempo.
 
 ## Gráficos generados
 
 A continuación, se presentan los gráficos generados para el análisis de resultados.
-Perfil de temperatura exterior a lo largo del día
-Variación en la radiación solar a lo largo del día
+
 Temperatura en función de la distancia en distintos instantes de tiempo
+
 Gráfico de contorno de la temperatura en función del grosor de la pared y del tiempo
+
 Gráfico de contorno de la capacidad calorífica en función del grosor de la pared y del tiempo
