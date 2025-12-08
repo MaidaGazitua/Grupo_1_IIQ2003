@@ -177,9 +177,13 @@ A continuación, se presentan los gráficos generados para el análisis de resul
 
 ![Radiación a lo largo del día](Figuras/Radiacion.png)
 
+Se observa que la radiación entre las 20:00 y las 5:00 es 0, lo cual se explica porque es de noche. Por otro lado, la radiación máxima se alcanza a las 14:00 y es 1013.066 W/m^2. Además, se observa una variación senoidal (simétrica) a lo largo del día, lo cual es una buena aproximación a la realidad.
+
 **Figura 2:** Temperatura exterior a lo largo del día (Figuras, Temperatura_exterior.png)
 
 ![Temperatura externa a lo largo del día](Figuras/Temperatura_exterior.png)
+
+Se observa que la temperatura baja durante las primeras horas de la madrugada y luego comienza a aumentar, alcanzando su valor máximo a las 14:00. Esto es coherente con el gráfico de radiación, ya que existe una relación directa entre ambos valores. Luego, la temperatura comienza a disminuir gradualmente con el paso del tiempo. Además, se observa que la temperatura mínima es de 288 K, mientras que la temperatura máxima es de 303 K aprozimadamente. Esto coincide con los valores promedio entregados por el Ministerio de Energía en un día de verano.
 
 **Figura 3:** Temperatura en función de la distancia en distintos instantes de tiempo (Figuras, Perfil_temperatura.png)
 
