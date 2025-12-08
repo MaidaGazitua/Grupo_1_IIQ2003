@@ -189,10 +189,17 @@ Se observa que la temperatura baja durante las primeras horas de la madrugada y 
 
 ![Perfil de temperatura en función de x y t](Figuras/Perfil_temperatura.png)
 
+Durante la noche y primeras horas de la mañana, las curvas están muy cercanas entre sí y las temperaturas se mantienen entre 292 y 298K aproximadamente, sin mostrar grandes perturbaciones. A medida que avanza el día y aumenta la temperatura exterior, los perfiles se separan y aparece un gradiente cada vez mayor entre la superficie exterior e interior de la pared. A las 14:00 horas, se alcanzan las máximas temperaturas en la zona exterior, mientras que el interior del muro se
+calienta de forma más lenta. Esto muestra la capacidad de la pared para atenuar y retrasar las variaciones de temperatura.
+
 **Figura 4:** Gráfico de contorno de la temperatura en función del grosor de la pared y del tiempo (Figuras, Grafico_contorno_temperatura.png)
 
 ![Gráfico de contorno de temperatura en función de x y t](Figuras/Grafico_contorno_temperatura.png)
 
+Se aprecia claramente cómo las capas cercanas al exterior registran primero el aumento de temperatura durante el día, mientras que las capas internas reaccionan con cierto retraso. El gradiente es mayor durante las horas donde la temperatura exterior y la radiación son máximas, y se suaviza durante la noche. Se puede analizar que el muro va amortiguando las variaciones térmicas exteriores antes de que lleguen al lado interior de la pared.
+
 **Figura 5:** Gráfico de contorno de la capacidad calorífica en función del grosor de la pared y del tiempo (Figuras, Grafico_contorno_cp.png)
 
 ![Gráfico de contorno de cp en función de x y t](Figuras/Grafico_contorno_cp.png)
+
+Se observa una franja de valores de capacidad calorífica elevados en la zona amarilla que aparece en determinadas horas y se desplaza desde la cara exterior hacia el interior. En esa zona, el material absorbe calor asociado al cambio de fase sin aumentar tanto la temperatura, lo que se traduce en un aumento del valor del coeficiente. Esto muestra que el PCM no actúa de manera uniforme en todo el espesor, sino sólo donde la temperatura alcanza el rango de fusión. Esta zona es la que efectivamente contribuye a estabilizar la temperatura dentro del muro.
