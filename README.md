@@ -9,32 +9,32 @@ La principal problemática que aborda el proyecto es el alto consumo energético
 
 En Chile, existe una importante problemática para mantener condiciones térmicas adecuadas dentro del hogar debido a la baja calidad constructiva y la ausencia de aislación [4]. Miles de familias deben destinar una proporción significativa de sus ingresos a calefacción para alcanzar temperaturas mínimas de confort, sin lograrlo en muchos casos [5]. Esta situación que genera un círculo de desigualdad, donde familias quedan expuestas a enfermedades respiratorias y contaminación intradomiciliaria, enfrentando altos costos energéticos que afectan su presupuesto mensual [6]. En este contexto, mejorar el aislamiento térmico de muros y techos puede reducir la demanda energética hasta en un 40%, mejorando el bienestar y salud de las familias [4]. 
 
-La carencia de un buen aislamiento térmico ha impulsado al Estado a implementar proyectos relacionados con la sustentabilidad, respondiendo a la urgencia de optimizar el uso energético y reducir el impacto económico y ambiental del país [7]. Uno de ellos es la actualización de la reglamentación térmica en la Ordenanza General de Urbanismo y Construcciones (OGUC), que incorpora exigencias para las infraestructuras de establecimientos educacionales y de salud. El Ministerio de Vivienda y Urbanismo presenta una serie de beneficios de este cambio: permitirá mantener una temperatura cómoda, mejorar calidad del aire interior, evitar patologías constructivas por condensación, reducir el uso de leña, disminuir las emisiones de material particulado y contribuir al ahorro en calefacción [8]. Esto confirma la pertinencia del proyecto frente a las necesidades del país, el que se plantea como una contribución al esfuerzo de mejorar la calidad de vida de los habitantes y proteger el medio ambiente. 
+La carencia de un buen aislamiento térmico ha impulsado al Estado a implementar proyectos relacionados con la sustentabilidad, respondiendo a la urgencia de optimizar el uso energético y reducir el impacto económico y ambiental del país [7]. Uno de ellos es la actualización de la reglamentación térmica en la Ordenanza General de Urbanismo y Construcciones, que incorpora exigencias para las infraestructuras de establecimientos educacionales y de salud. El Ministerio de Vivienda y Urbanismo presenta una serie de beneficios de este cambio: permitirá mantener una temperatura cómoda, mejorar calidad del aire interior, evitar patologías constructivas por condensación, reducir el uso de leña, disminuir las emisiones de material particulado y contribuir al ahorro en calefacción [8]. Esto confirma la pertinencia del proyecto frente a las necesidades del país, el que se plantea como una contribución al esfuerzo de mejorar la calidad de vida de los habitantes y proteger el medio ambiente. 
 
-## Explicación breve del sistema modelado
+## Explicación del sistema modelado
 
 El proyecto permite caracterizar el perfil de temperatura en paredes residenciales en Santiago de Chile, el cual está gobernado por conducción de calor a través de su espesor. Esta condición nos permite modelar el problema de forma unidimensional, dado que las variaciones laterales de temperatura son despreciables en comparación al gradiente dominante en el eje normal a la superficie. Esta aproximación es aceptable en geometrías donde una dimensión es significativamente menor que las otras, ya que la conducción se concentra casi exclusivamente en la dirección reducida [10]. A la vez, se plantea un modelo transiente que incluye las variaciones en las condiciones ambientales a lo largo del día, tanto de temperatura exterior como de radiación.
 
-Luego, se definieron los principales fenómenos de transporte involucrados. De forma más relevante, se debe considerar la transferencia de calor por conducción a lo largo del espesor de la pared. A la vez, existe transferencia de calor por convección natural, tanto hacia el interior como el exterior de la vivienda. Para el interior, se consideró una temperatura constante de 21°C. Para el exterior, se consideró una variación temporal senoidal de temperatura durante el verano. Por último, se debe incluir el calor absorbido por radiación solar, asumiendo una variación senoidal a lo largo del día.
+Luego, se definieron los principales fenómenos de transporte involucrados. De forma más relevante, se debe considerar la transferencia de calor por conducción a lo largo del espesor de la pared. A la vez, existe transferencia de calor por convección natural, tanto hacia el interior como el exterior de la vivienda. Para el interior, se consideró una temperatura constante de 21°C. Para el exterior, se consideró una variación temporal senoidal de temperatura durante el verano. Por último, se debe incluir el calor absorbido por radiación solar, asumiendo también una variación senoidal a lo largo del día.
 
-Para modelar el sistema, se consideraron 5 supuestos relevantes. En primer lugar, la transferencia de calor a través de la pared es unidimensional en el eje x. Además, no hay ninguna fuente de generación de energía dentro de la pared. A la vez, el aislante dentro de la pared está distribuido de forma homogénea y es isotrópico. Por otro lado, la densidad y conductividad térmica del material son constantes. Finalmente, se puede despreciar la convección forzada, asumiendo que la velocidad del viento es suficientemente baja. A continuación, se presenta un esquema del sistema.
+Para modelar el sistema, se consideraron 5 supuestos relevantes. En primer lugar, la transferencia de calor a través de la pared es unidimensional en el eje x. Además, no hay ninguna fuente de generación de energía dentro de la pared. A la vez, el aislante dentro de la pared está distribuido de forma homogénea y es isotrópico. Por otro lado, la densidad y conductividad térmica del material son constantes. Finalmente, se puede despreciar la convección forzada, asumiendo que la velocidad del viento es suficientemente baja. A continuación, se presenta un esquema del sistema. Es posible encontrar esta figura en la carpeta Figuras bajo el nombre Esquema.
 
 ![Esquema transferencia de calor en pared residencial](Figuras/Esquema.png)
 
-## Descripción del método numérico utilizado
+## Ecuaciones que describen el sistema
 
-A partir de los supuestos realizados, se pudo modelar el problema mediante la ecuación de conservación de energía:
+A partir de los supuestos realizados, se puede modelar el problema mediante la ecuación de conservación de energía:
 
 $$\rho c_p \left( \frac{\partial T}{\partial t} + v_x \frac{\partial T}{\partial x} + v_y \frac{\partial T}{\partial y} + v_z \frac{\partial T}{\partial z} \right) = k \left( \frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} + \frac{\partial^2 T}{\partial z^2} \right) + \mu\phi_v$$
 
-Se consideró que las velocidades en todos los ejes son 0, ya que se está modelando un sólido. Además, solo nos interesa el transporte transiente en la dirección x. Por lo tanto, el sistema se simplifica a a siguiente ecuación:
+Se considera que las velocidades en todos los ejes son 0, ya que se está modelando un sólido. Además, solo nos interesa el transporte transiente en la dirección x. Por lo tanto, el sistema se simplifica a la siguiente ecuación:
 
 $$
 \rho c_p \frac{\partial T}{\partial t}
 = k \frac{\partial^2 T}{\partial x^2}
 $$
 
-Considerando que la capacidad calorífica varía con la temperatura, se puede modelar mediante las siguientes ecuaciones, considerando que su temperatura de fusión (Tm) es igual a 23,7°C:
+Considerando que la capacidad calorífica varía con la temperatura, se puede modelar mediante las siguientes ecuaciones:
 
 $$
 C_p(T) =
@@ -46,23 +46,21 @@ C_{p0}+h\cdot \dfrac{w_r^{2 m_r}}
 \end{cases}
 $$
 
-Además, se planteó 1 condición inicial y 2 condiciones de borde. La condición inicial considera que la temperatura en el tiempo 0 es conocida. La primera condición de borde considera la transferencia de calor por convección hacia el interior de la vivienda, asumiendo que esta mantiene una temperatura constante de 21°C. La segunda condición de borde incluye la transferencia de calor por convección hacia el exterior de la vivienda, así como por radiación. Para este caso, se considera que tanto la temperatura exterior como radiación solar varían de forma senoidal a lo largo del día:
+Además, se planteó 1 condición inicial y 2 condiciones de borde. La condición inicial considera que la temperatura en el tiempo 0 es conocida. La primera condición de borde contempla la transferencia de calor por convección hacia el interior de la vivienda, asumiendo que esta mantiene una temperatura constante de 21°C. La segunda condición de borde incluye la transferencia de calor por convección hacia el exterior de la vivienda, así como por radiación. Para este caso, se considera que tanto la temperatura exterior como la radiación solar varían de forma senoidal a lo largo del día. Estas se muestran a continuación, en su orden respectivo.
 
 $$
-\text{1) Condición inicial: } \quad T(x, t=0) = T_0
+\quad T(x, t=0) = T_0
 $$
 
 $$
-\text{2) Condición borde 1:} \quad
 -k \frac{\partial T(x=0)}{\partial x} = h_1 \left( T_\infty^{\text{interior}} - T(x=0) \right)
 $$
 
 $$
-\text{3) Condición borde 2:} \quad
 -k \frac{\partial T(x=\delta)}{\partial x}= h_2 \left( T(x=\delta) - T_\infty^{\text{exterior}}(t) \right)- \alpha q''_{solar}(t)
 $$
 
-donde $T_\infty^{\text{exterior}(t)}$ y $q''_{solar}(t)$ son funciones senoidales en función del tiempo:
+donde $T_\infty^{\text{exterior}}(t)$ y $q''_{solar}(t)$ son funciones senoidales en función del tiempo:
 
 $$
 T_\infty^{\text{exterior}}(t)= \frac{T_{\max} + T_{\min}}{2}+ \frac{T_{\max} - T_{\min}}{2}\sin\left( \frac{\pi}{43200} t - \frac{2\pi}{3} \right)
@@ -77,7 +75,15 @@ q_{s,\max} \, \sin\left( \frac{\pi}{57600}\, t - \frac{5\pi}{16} \right),
 \end{cases}
 $$
 
-Luego, se puede discretizar la ecuación diferencial y las condiciones de borde. Para la ecuación diferencial, se considera una aproximación hacia adelante de primer orden para la derivada temporal, y una aproximación central de segundo orden para la derivada espacial. Para la condición inicial, se reemplaza en el nodo de tiempo 0. Para la condición de borde 1, se usa una aproximación hacia adelante de segundo orden. Para la condición de borde 2, se usa una aproximación hacia atrás de segundo orden. A continuación, se muestra la forma en que se despeja la discretización de la ecuación diferencial.
+## Descripción del método numérico utilizado
+
+Para resolver el sistema, se deben usar dos métodos numéricos acoplados. En primer lugar, se debe implementar el algoritmo *forward time centred space* (FTCS), el cual consiste en un esquema de discretización hacia adelante en el tiempo centrado en el espacio. Se elige este método porque la ecuación diferencial obtenida es parabólica. Esto se puede concluir porque se compone de una derivada temporal de primer orden y una derivada espacial de segundo orden, con un término difusivo positivo. Por otro lado, este esquema es adecuado para modelar el perfil de temperatura en una pared residencial, el cual evoluciona con el tiempo y la coordenada del espesor de la pared. Esto se debe a que el algoritmo permite capurar de forma directa dicha evolución, ya que itera nodo a nodo desde la condición inicial. Entonces, se debe discretizar la ecuación diferencial y escribirla de la forma: $T^{j+1}=AT^j=T^j+\Delta t \cdot \Delta T^j$. De este modo, se puede calcular el valor de la temperatura en la iteración siguiente a partir de la iteración actual. Para ello, se debe resolver el sistema matricial en cada iteración y redefinir las condiciones de borde.
+
+Sin embargo, estamos analizando un material de cambio de fase. Como consecuencia, la capacidad calorífica varía con la temperatura. Luego, los coeficientes de la matriz A también varían con la temperatura. Es por ello que se debe implementar el método del punto fijo en cada iteración FTCS. Este es un método iterativo que permite resolver sistemas de ecuaciones no lineales. En este caso, la capacidad calorífica tiene un término de temperatura elevado a -2, por lo que la ecuación a resolver es no lineal. Entonces, se comienza definiendo una temperatura arbitraria. Luego, se calcula la capacidad calorífica y la matriz A para encontrar el valor de la temperatura. Este resultado se mejora en cada iteración hasta alcanzar una convergencia con la iteración anterior, lo que significa que la tolerancia es suficientemente baja. En este caso, se definió la convergencia cuando la tolerancia es menor 0.001.
+
+Luego, acoplar ambos métodos resulta óptimo para resolver la ecuación diferencial. Esto se debe a que se realiza una iteración del método del punto fijo antes de resolver el sistema de ecuaciones por FTCS. Esto permite obtener una matriz A con coeficientes constantes, y de esta forma, resolver la ecuación. Como resultado, es posible modelar la evolución térmica en el espacio y en el tiempo a partir de la iteración anterior, asegurando la continuidad de los resultados entre sí. Por otro lado, se puede afirmar que el método es estable. Esto significa que los errores de discretización se encuentran acotados o convergerán a 0 en el tiempo. Esto se debe a que se usó la relación con el número de Fourier para definir el paso del tiempo: $\Delta t \leq \frac{Fo \cdot \Delta x^2}{2 \alpha}$.
+
+Para aplicar el método numérico, se debe discretizar la ecuación diferencial y las condiciones de borde. Para la ecuación diferencial, se considera una aproximación hacia adelante de primer orden para la derivada temporal, y una aproximación central de segundo orden para la derivada espacial. Esto se justifica porque se aplicará el método FTCS, que busca construir el valor de la iteración siguiente a partir de la actual. Para la condición inicial, se reemplaza en el nodo de tiempo 0. Para la condición de borde 1, se usa una aproximación hacia adelante de segundo orden. Para la condición de borde 2, se usa una aproximación hacia atrás de segundo orden. A continuación, se muestra la forma en que se despeja la discretización de la ecuación diferencial.
 
 $$
 \rho\ c_p\\frac{T_i^{j+1} - T_i^{j}}{\Delta t}=k\frac{T_{i+1}^{j} - 2T_i^{j} + T_{i-1}^{j}}{\Delta x^2}
@@ -117,20 +123,17 @@ $$
 T_i^j = \frac{1}{-\frac{3}{2\Delta x}-h_2}\left(\frac{k}{2\Delta x} \left(- 4T_{i-1}^{j} + T_{i-2}^{j} \right) - h_2 T_\infty^{\text{exterior}} -\alpha q_{solar}\right)
 $$
 
-Para resolver el sistema, se utilizarán dos métodos numéricos acoplados. En primer lugar, se implementará el método forward time centred space (FTCS) para resolver el sistema. Se inicia el esquema FTCS para cada instante de tiempo t. Dado que la capacidad calorífica ($c_p$) varía con la temperatura, se implementa el método de punto fijo para construir una matriz A que también dependa de la temperatura. Luego, para cada instante de tiempo, se define una temperatura intermedia. A partir de esta, se calcula la matriz A que contiene los coeficientes del método FTCS y se calcula una nueva temperatura. Una vez que el método converge, se continua con la aplicación del algoritmo FTCS. Esto significa que se actualizan los nodos interiores y condiciones de borde. Este procedimiento se repite para todos los instantes de tiempo, 
-
-Por un lado, el algoritmo FTCS...
-
-Por el otro lado, el método del punto fijo...
 
 ## Instrucciones para ejecutar el código
 
-1. Importar módulos: el primer paso consiste en importar los módulos que nos servirán para resolver el problema computacional. En específico, necesitamos 3 módulos:
+El código se puede ejecutar en Jupyter Notebook. En específico, se usó la versión 3.11.9 de Python, que posee sus instaladores respectivos. 
+
+1. Importar librerías: el primer paso consiste en importar las librerías que nos servirán para resolver el problema computacional. En específico, necesitamos 3 librerías:
 - numpy: permite realizar operaciones matemáticas y construir vectores y matrices multidimensionales.
 - matplotlib.pyplot: permite realizar gráficos.
 - cm: es una paleta de colores inclusiva que facilita la visualización de los gráficos.
   
-2. Definir datos: Antes de implementar el modelo computacional, se deben definir todos los datos que se usarán a lo largo del problema. Al escribirlos en un inicio, se mantiene un orden que permite comprender de forma secuencial el modelo. Se debe definir la densidad y espesor de la pared, los coeficientes de transferencia de calor por convección natural, la conductividad térmica, difusividad térmica promedio, temperatura interior de la vivienda, inicial, mínima y máxima de medición, temperatura de fusión del material, absorbancia, radiación solar máxima y los parámetros a reemplazar en la ecuación que define el valor de la capacidad calorífica en función de la temperatura.
+2. Definir datos: Antes de implementar el modelo computacional, se deben definir todos los datos que se usarán a lo largo del problema. Al escribirlos en un inicio, se mantiene un orden que permite comprender de forma secuencial el modelo. Se debe definir la densidad y espesor de la pared, los coeficientes de transferencia de calor por convección natural, la conductividad térmica, difusividad térmica promedio, temperatura interior de la vivienda, temperatura inicial, mínima y máxima de medición, temperatura de fusión del material, absorbancia, radiación solar máxima y los parámetros a reemplazar en la ecuación que define el valor de la capacidad calorífica en función de la temperatura.
 
 3. Graficar la radiación y temperatura exterior en función del tiempo. De esta forma, se verifica que las ecuaciones efectivamente representan de forma adecuada las variaciones temporales. Simplemente se reemplazan las ecuaciones definidas previamente con los datos encontrados.
 
@@ -170,22 +173,22 @@ El paso a paso específico de la implementación del código es el siguiente:
 
 A continuación, se presentan los gráficos generados para el análisis de resultados.
 
-**Figura 1:** Radiación a lo largo del día
+**Figura 1:** Radiación a lo largo del día (Figuras, Radiacion.png)
 
 ![Radiación a lo largo del día](Figuras/Radiacion.png)
 
-**Figura 2:** Temperatura exterior a lo largo del día
+**Figura 2:** Temperatura exterior a lo largo del día (Figuras, Temperatura_exterior.png)
 
 ![Temperatura externa a lo largo del día](Figuras/Temperatura_exterior.png)
 
-**Figura 3:** Temperatura en función de la distancia en distintos instantes de tiempo
+**Figura 3:** Temperatura en función de la distancia en distintos instantes de tiempo (Figuras, Perfil_temperatura.png)
 
 ![Perfil de temperatura en función de x y t](Figuras/Perfil_temperatura.png)
 
-**Figura 4:** Gráfico de contorno de la temperatura en función del grosor de la pared y del tiempo
+**Figura 4:** Gráfico de contorno de la temperatura en función del grosor de la pared y del tiempo (Figuras, Grafico_contorno_temperatura.png)
 
 ![Gráfico de contorno de temperatura en función de x y t](Figuras/Grafico_contorno_temperatura.png)
 
-**Figura 5:** Gráfico de contorno de la capacidad calorífica en función del grosor de la pared y del tiempo
+**Figura 5:** Gráfico de contorno de la capacidad calorífica en función del grosor de la pared y del tiempo (Figuras, Grafico_contorno_cp.png)
 
 ![Gráfico de contorno de cp en función de x y t](Figuras/Grafico_contorno_cp.png)
