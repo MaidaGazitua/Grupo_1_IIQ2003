@@ -1,1 +1,1 @@
-En esta carpeta se presentan las fuentes y los datos que se usaron para resolver el modelo computacional.
+En esta carpeta se presentan las fuentes y los datos que se usaron para resolver el modelo computacional. Para los datos de temperatura y radiación, se usó la información entregada por el Ministerio de Energía [14]. A la vez, los valores de los coeficientes de convección y la absorbancia se obtuvieron del paper publicado por Cao et al. [13]. 
