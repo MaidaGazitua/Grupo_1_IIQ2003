@@ -171,35 +171,46 @@ El paso a paso específico de la implementación del código es el siguiente:
 
 ## Gráficos generados
 
-A continuación, se presentan los gráficos generados para el análisis de resultados.
+A continuación, se presentan los gráficos generados para el análisis de resultados. Todos se encuentran presentes en la carpeta Figuras, con sus nombres respectivos.
 
-**Figura 1:** Radiación a lo largo del día (Figuras, Radiacion.png)
+**Figura 1:** Radiación a lo largo del día
 
 ![Radiación a lo largo del día](Figuras/Radiacion.png)
 
 Se observa que la radiación entre las 20:00 y las 5:00 es 0, lo cual se explica porque es de noche. Por otro lado, la radiación máxima se alcanza a las 14:00 y es 1013.066 W/m^2. Además, se observa una variación senoidal (simétrica) a lo largo del día, lo cual es una buena aproximación a la realidad.
 
-**Figura 2:** Temperatura exterior a lo largo del día (Figuras, Temperatura_exterior.png)
+**Figura 2:** Temperatura exterior a lo largo del día
 
 ![Temperatura externa a lo largo del día](Figuras/Temperatura_exterior.png)
 
-Se observa que la temperatura baja durante las primeras horas de la madrugada y luego comienza a aumentar, alcanzando su valor máximo a las 14:00. Esto es coherente con el gráfico de radiación, ya que existe una relación directa entre ambos valores. Luego, la temperatura comienza a disminuir gradualmente con el paso del tiempo. Además, se observa que la temperatura mínima es de 288 K, mientras que la temperatura máxima es de 303 K aprozimadamente. Esto coincide con los valores promedio entregados por el Ministerio de Energía en un día de verano.
+Se observa que la temperatura baja durante las primeras horas de la madrugada y luego comienza a aumentar, alcanzando su valor máximo a las 14:00. Esto es coherente con el gráfico de radiación, ya que existe una relación directa entre ambos valores. Luego, la temperatura comienza a disminuir gradualmente con el paso del tiempo. Además, se observa que la temperatura mínima es de 288 K, mientras que la temperatura máxima es de 303 K aprozimadamente. Esto coincide con los valores promedio entregados por el Ministerio de Energía en un día de verano [15].
 
-**Figura 3:** Temperatura en función de la distancia en distintos instantes de tiempo (Figuras, Perfil_temperatura.png)
+**Figura 3:** Temperatura en función de la distancia en distintos instantes de tiempo
 
 ![Perfil de temperatura en función de x y t](Figuras/Perfil_temperatura.png)
 
-Durante la noche y primeras horas de la mañana, las curvas están muy cercanas entre sí y las temperaturas se mantienen entre 292 y 298K aproximadamente, sin mostrar grandes perturbaciones. A medida que avanza el día y aumenta la temperatura exterior, los perfiles se separan y aparece un gradiente cada vez mayor entre la superficie exterior e interior de la pared. A las 14:00 horas, se alcanzan las máximas temperaturas en la zona exterior, mientras que el interior del muro se
-calienta de forma más lenta. Esto muestra la capacidad de la pared para atenuar y retrasar las variaciones de temperatura.
+Durante la noche y las primeras horas de la mañana, las curvas permanecen muy cercanas entre sí y las temperaturas se mantienen entre 292 y 298K, sin mostrar grandes perturbaciones debido a la ausencia de radiación solar. En este periodo, la pared se encuentra en un régimen pseudo-estacionario, donde el gradiente térmico a través de su espesor es pequeño. 
 
-**Figura 4:** Gráfico de contorno de la temperatura en función del grosor de la pared y del tiempo (Figuras, Grafico_contorno_temperatura.png)
+A medida que avanza el día y aumenta la temperatura exterior, los perfiles se separan y aparece un gradiente cada vez mayor entre las superficies de la pared. Las curvas asociadas a la cara externa de la pared (mayores valores de x) muestran incrementos más rápidos, mientras que aquellas asociadas a la cara interna son más estables en el tiempo. Esto se debe a que el material de cambio de fase absorbe la energía del exterior, atenuando y retrasando la transferencia de calor hacia el interior.
+
+A las 14:00 horas, se alcanzan las máximas temperaturas en la zona exterior, coherente con la máxima radiación solar. Por el contrario, el interior de la pared se calienta de forma más lenta y alcanza su máxima temperatura cerca de las 15:00 horas. Este desfase térmico permite corroborar que el material de cambio de fase cambia su capacidad calorífica a lo largo del día, atenuando las variaciones de temperatura en la superficie interior de la pared. De esta forma, permite mantener un equilibrio térmico dentro de la vivienda. Además, las temperaturas que alcanza la superficie interna son significativamente menores que las de la superficie externa, lo cual evidencia su efectividad como aislador térmico.
+
+**Figura 4:** Gráfico de contorno de la temperatura en función del grosor de la pared y del tiempo
 
 ![Gráfico de contorno de temperatura en función de x y t](Figuras/Grafico_contorno_temperatura.png)
 
-Se aprecia claramente cómo las capas cercanas al exterior registran primero el aumento de temperatura durante el día, mientras que las capas internas reaccionan con cierto retraso. El gradiente es mayor durante las horas donde la temperatura exterior y la radiación son máximas, y se suaviza durante la noche. Se puede analizar que el muro va amortiguando las variaciones térmicas exteriores antes de que lleguen al lado interior de la pared.
+El gráfico de contorno permite analizar de forma más directa la figura 3. Se aprecia claramente cómo las capas cercanas a la superficie externa registran primero el aumento de temperatura durante el día, mientras que las capas internas reaccionan con cierto retraso. El gradiente es mayor durante las horas donde la temperatura exterior y la radiación son máximas, y se suaviza durante la noche. Esto confirma que el material de cambio de fase amortigua las variaciones térmicas exteriores antes de que lleguen al interior de la pared. Como resultado, las variaciones de temperatura en la cara interna de la pared son mucho menores que en la capa exterior. 
 
-**Figura 5:** Gráfico de contorno de la capacidad calorífica en función del grosor de la pared y del tiempo (Figuras, Grafico_contorno_cp.png)
+Por otro lado, la cara exterior de la pared presenta temperaturas significativamente altas, alcanzando hasta 45°C. Esto se atribuye directamente al efecto de la radiación solar sobre el concreto, ya que tanto la absorbancia del material como la intensidad de radiación solar son altas. Esto es coherente físicamente, ya que el concreto puede alcanzar temperaturas muy altas en exposición directa al sol, sin ninguna fuente que lo enfríe. Sin embargo, la superficie interna de la pared no supera los 35°C, lo cual demuestra la capaciadad de aislamiento del material. Un análisis de sensibilidad más detallado demostraría que, mientras mayor es el espesor de la pared, mayor es la diferencia de temperatura entre ambas superficies.
+
+**Figura 5:** Gráfico de contorno de la capacidad calorífica en función del grosor de la pared y del tiempo
 
 ![Gráfico de contorno de cp en función de x y t](Figuras/Grafico_contorno_cp.png)
 
-Se observa una franja de valores de capacidad calorífica elevados en la zona amarilla que aparece en determinadas horas y se desplaza desde la cara exterior hacia el interior. En esa zona, el material absorbe calor asociado al cambio de fase sin aumentar tanto la temperatura, lo que se traduce en un aumento del valor del coeficiente. Esto muestra que el PCM no actúa de manera uniforme en todo el espesor, sino sólo donde la temperatura alcanza el rango de fusión. Esta zona es la que efectivamente contribuye a estabilizar la temperatura dentro del muro.
+Desde las 0:00 hasta las 8:00 de la mañana, se observa una franja amarilla que representa valores elevados de capacidad calorífica. En este periodo de tiempo, las temperaturas aún no superan la temperatura de fusión del material, por lo que se encuentra en estado sólido. 
+
+Luego, hay un cambio abrupto cerca de las 8:00, donde la capacidad calorífica disminuye y se mantiene relativamente constante en el tiempo. Esto se asocia a que el material cambia a fase líquida porque la pared alcanza 23,7°C, iniciando el proceso de fusión. Además, hay un retraso temporal, ya que el material cambia primero de fase cerca de la superficie exterior, y luego cerca de la superficie interior. Esto es coherente con el desfase térmico observado en el perfil de temperatura.
+
+Finalmente, cerca de las 22:00, el material vuelve a cambiar a fase sólida, ya que la pared vuelve a alcanzar 23,7°C. Por lo tanto, la capacidad calorífica vuelve a aumentar, lo que se asocia al proceso de solidificación. 
+
+Este comportamiento muestra que el PCM no actúa de manera uniforme en todo el espesor, sino sólo donde la temperatura alcanza el rango de fusión. Esta zona es la que efectivamente contribuye a estabilizar la temperatura dentro del muro.
