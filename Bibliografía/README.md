@@ -16,14 +16,16 @@
 
 [8] Ministerio de Vivienda y Urbanismo. (2024). *Nueva Reglamentación Térmica*. https://www.minvu.gob.cl/nueva-reglamentacion-termica/  
 
-[9] Tapia, A., Boer, D., Salinas, C. & Vasco, D. (2023). Optimized thermal envelope of low-income dwellings in Santiago de Chile incorporating Pinus radiata wood impregnated with phase change materials. *Journal of Energy Storage, 60*. https://www.sciencedirect.com/science/article/abs/pii/S2352152X23000622  
+[9] Becerra, M., Jerez, A., Valenzuela, M., Garcés, H. O., & Demarco, R. (2018). Life quality disparity: Analysis of indoor comfort gaps for Chilean households. *Energy Policy, 121*, 190–201.  https://www.sciencedirect.com/science/article/pii/S0301421518303987?fr=RR-2&ref=pdf_download&rr=9aa826016eebe99e 
 
-[10] Cengel, Y. (2002). Basics of heat transfer. *Heat and mass transfer: a practical approach*. McGrawHill. 
+[10] Tapia, A., Boer, D., Salinas, C. & Vasco, D. (2023). Optimized thermal envelope of low-income dwellings in Santiago de Chile incorporating Pinus radiata wood impregnated with phase change materials. *Journal of Energy Storage, 60*. https://www.sciencedirect.com/science/article/abs/pii/S2352152X23000622  
 
-[11] Gobierno de Chile. D.S. N°47, 1992 – Ordenanza General de Urbanismo y Construcciones. 26 de septiembre de 2025 (Chile). 
+[11] Cengel, Y. (2002). Basics of heat transfer. *Heat and mass transfer: a practical approach*. McGrawHill. 
 
-[12] Cao, V. D., Pilehvar, S., Salas-Bringas, C., Szczotok, A. M., Bui, T. Q., Carmona, M., Rodriguez, J. F., & Kjøniksen, A.-L. (2018). Thermal performance and numerical simulation of geopolymer concrete containing different types of thermoregulating materials for passive building applications. *Energy and Buildings, 173*, 678–688. https://doi.org/10.1016/j.enbuild.2018.06.011  
+[12] Gobierno de Chile. D.S. N°47, 1992 – Ordenanza General de Urbanismo y Construcciones. 26 de septiembre de 2025 (Chile). 
 
-[13] Cao, V. D., Pilehvar, S., Salas-Bringas, C., Szczotok, A. M., Bui, T. Q., Carmona, M., Rodriguez, J. F., & Kjøniksen, A.-L. (2019). Thermal analysis of geopolymer concrete walls containing microencapsulated phase change materials for building applications.  *Solar Energy, 178*, 295-307. https://www.sciencedirect.com/science/article/pii/S0038092X18312143  
+[13] Cao, V. D., Pilehvar, S., Salas-Bringas, C., Szczotok, A. M., Bui, T. Q., Carmona, M., Rodriguez, J. F., & Kjøniksen, A.-L. (2018). Thermal performance and numerical simulation of geopolymer concrete containing different types of thermoregulating materials for passive building applications. *Energy and Buildings, 173*, 678–688. https://doi.org/10.1016/j.enbuild.2018.06.011  
 
-[14] Ministerio de Energía. (2025). *Explorador solar*. https://solar.minenergia.cl/inicio 
+[14] Cao, V. D., Pilehvar, S., Salas-Bringas, C., Szczotok, A. M., Bui, T. Q., Carmona, M., Rodriguez, J. F., & Kjøniksen, A.-L. (2019). Thermal analysis of geopolymer concrete walls containing microencapsulated phase change materials for building applications.  *Solar Energy, 178*, 295-307. https://www.sciencedirect.com/science/article/pii/S0038092X18312143  
+
+[15] Ministerio de Energía. (2025). *Explorador solar*. https://solar.minenergia.cl/inicio 
