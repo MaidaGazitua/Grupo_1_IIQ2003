@@ -70,7 +70,7 @@ $$
 q''_{solar}(t) = 
 \begin{cases}
 0, & 21{:}00 \le t \le 5{:}00 \\
-q_{s,\max} \, \sin\left( \frac{\pi}{57600}\, t - \frac{5\pi}{16} \right),
+q_{s,\max} \sin\left( \frac{\pi}{57600} t - \frac{5\pi}{16} \right),
 & 5{:}00 < t < 21{:}00
 \end{cases}
 $$
