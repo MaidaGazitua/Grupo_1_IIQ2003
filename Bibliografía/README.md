@@ -2,9 +2,9 @@
 
 [1] Ministerio de Energía. (2019, 9 de julio). Estudio revela que el 73 % del consumo energético de los hogares se destina a calefacción, climatización y agua caliente. *Gobierno de Chile*. https://energia.gob.cl/noticias/nacional/estudio-revela-que-el-73-del-consumo-energetico-de-los-hogares-se-destina-calefaccionclimatizacion-y-agua-caliente  
 
-[2] Ministerio de Energía. (2019). Resumen ejecutivo: Caracterización del sector residencial 2018. *Gobierno de Chile*. https://www.energia.gob.cl/sites/default/files/documentos/resumen_ejecutivo_caracterizacion_residencial_2018.pdf  
+[2] Piedra, J. (2022, 20 de octubre). Eficiencia energética en viviendas: cuando el Ministerio de Energía abandona un compromiso. *CIPER*. https://www.ciperchile.cl/2022/10/20/eficiencia-energetica-en-viviendas/ 
 
-[3] Piedra, J. (2022, 20 de octubre). Eficiencia energética en viviendas: cuando el Ministerio de Energía abandona un compromiso. *CIPER*. https://www.ciperchile.cl/2022/10/20/eficiencia-energetica-en-viviendas/  
+[3] Ministerio de Energía. (2019). Resumen ejecutivo: Caracterización del sector residencial 2018. *Gobierno de Chile*. https://www.energia.gob.cl/sites/default/files/documentos/resumen_ejecutivo_caracterizacion_residencial_2018.pdf  
 
 [4] Universidad Central de Chile. (2020). *Eficiencia energética en una vivienda social. Revista Ingeniería al Día, 4*(1), 73–82. http://revistaingenieriaaldia.ucentral.cl/rev_4/art_7.pdf  
 
